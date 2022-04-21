@@ -8,5 +8,16 @@ import { Component } from '@angular/core';
 export class Tab1Page {
 
   constructor() {}
+  files: File[] = [];
 
+  onSelect(event) {
+    console.log(event);
+    this.files.pop();
+    this.files.push(...event.addedFiles);
+  }
+
+  onRemove(event) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
 }
