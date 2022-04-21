@@ -1,61 +1,145 @@
+$margins: 25px;
 .content {
     --background: #161718;
     padding: 1rem !important;
-    &-title {
-        margin: 3rem;
-        text-align: center;
-        font-size: 28px;
-        font-weight: bold;
+
+    & .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & .title {
+            color: white;
+            margin: $margins;
+            width: 80%;
+        }
     }
+    & .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     & .drop {
         background: transparent !important;
-        margin-left: 3rem;
-        margin-right: 3rem;
+        width: 80%;
+
         height: 110px;
         border-radius: 25px;
-        //border: 3px dashed #ffffff;
+        border: 3px dashed #dca301;
         font-size: 62px;
-        color: rgb(230, 228, 228);
+        color: #dca301;
         justify-content: center !important;
 
         &-prev {
             background: transparent !important;
-            min-height: 80px !important;
-            height: 80px !important;
-            max-height: 80px !important;
+            min-height: 50px !important;
+            height: 50px !important;
+            max-height: 50px !important;
+            max-width: 80% !important;
+            min-width: 80% !important;
+            width: 80% !important;
 
             &-text {
                 font-size: 18px;
             }
         }
     }
-    & .images{
+    & .images {
         margin-top: 2rem;
-        margin-left: 3rem;
-        margin-right: 3rem;
-        @media (min-width: 0px){
-            &-container{
+        width: 80%;
+        @media (min-width: 0px) {
+            &-container {
                 column-count: 2;
             }
         }
-        @media (min-width: 620px){
-            &-container{
+        @media (min-width: 620px) {
+            &-container {
                 column-count: 3;
             }
         }
-        @media (min-width: 8200px){
-            &-container{
+        @media (min-width: 8200px) {
+            &-container {
                 column-count: 4;
             }
         }
-        & .one-image{
+        & .one-image {
             padding-top: 5px;
             padding-bottom: 5px;
             img {
                 border-radius: 25px;
+                &.selected {
+                    //border: 3px solid #DCA301;
+                    outline: 3px solid #dca301;
+                    outline-offset: -3px;
+                }
             }
         }
-        
+    }
+    & .modal {
+        position: fixed;
+        border-radius: 25px;
+        background: #2c2c2eec;
+        width: 85%;
+        height: 300px;
+
+        z-index: 2;
+        &-header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            & .icon {
+                margin: 10px;
+                font-size: 30px;
+                color: #dca301;
+            }
+        }
+        &-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            & .button{
+                text-transform: capitalize;
+                --background: #161718;
+                width: 80%;
+                color: #dca301;
+                margin-bottom: 10px;
+            }
+
+        }
+        &.opened {
+            bottom: -100px;
+            animation-duration: 0.5s;
+            animation-name: slidein;
+        }
+        &.closed {
+            bottom: -300px;
+            animation-duration: 0.5s;
+            animation-name: slideout;
+        }
+    }
+
+    @keyframes slidein {
+        from {
+            bottom: -300px;
+        }
+
+        to {
+            bottom: -100px;
+        }
+    }
+    @keyframes slideout {
+        from {
+            bottom: -100px;
+        }
+
+        to {
+            bottom: -300px;
+        }
     }
 }
-
+ion-backdrop {
+    z-index: 1;
+    position: fixed;
+    opacity: 0.3;
+}
