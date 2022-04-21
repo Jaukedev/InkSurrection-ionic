@@ -1,24 +1,44 @@
 <ion-content [fullscreen]="true" class="content">
-  <ion-title class="content-title">
-    InkSurrection
-  </ion-title>
+  <ion-backdrop *ngIf="openModal" (click)="closeModal"></ion-backdrop>
   <ion-row>
-    <ion-col>
+    <ion-col class="header">
+      <img class="title" src="assets/icon/INK.png">
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="container">
       <ngx-dropzone class="drop" (change)="onSelect($event)" accept="image/jpeg,image/jpg,image/png" [multiple]="false">
-        <ngx-dropzone-label>+</ngx-dropzone-label>
+        <ion-icon name="add"></ion-icon>
         <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)" class="drop-prev">
           <ngx-dropzone-label class="drop-prev-text">Archivo ({{ f.type }})</ngx-dropzone-label>
         </ngx-dropzone-preview>
       </ngx-dropzone>
     </ion-col>
   </ion-row>
-  <div class="images">
-    <div class="images-container">
-      <div class="one-image" *ngFor="let image of [1,2,3,4,5,6,7,8,9,10]">
-        <img src="assets/images/{{image}}.jpg">
+  <ion-row>
+    <ion-col class="container">
+      <div class="images">
+        <div class="images-container">
+          <div class="one-image" *ngFor="let image of [1,2,3,4,5,6,7,8,9,10]">
+            <img (click)="onSelectFile(image)" src="assets/images/{{image}}.jpg"
+              [ngClass]="selectedFile === image ? 'selected' : 'none'">
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="container">
+    <ion-col class="modal" [ngClass]="openModal ? 'opened' : 'closed'">
+      <div class="modal-header">
+        <ion-icon name="close" class="icon" (click)="closeModal()"></ion-icon>
+      </div>
+      <div class="modal-container">
+        <ion-button fill="outline" color="#dca301" class="button" routerLink="/tabs/tab2">Editar</ion-button>
+        <ion-button fill="outline" color="#dca301" class="button">Eliminar</ion-button>
+      </div>
+
+    </ion-col>
+  </ion-row>
+
 </ion-content>

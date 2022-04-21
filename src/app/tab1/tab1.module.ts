@@ -7,6 +7,8 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 
+export class AppModule { }
+
 @NgModule({
   imports: [
     IonicModule,
@@ -16,6 +18,7 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
     Tab1PageRoutingModule,
     NgxDropzoneModule
   ],
+  
   declarations: [Tab1Page]
 })
 export class Tab1PageModule {}
