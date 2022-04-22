@@ -1,0 +1,42 @@
+<ion-content>
+  <ion-button (click)="onSelectEdit()" fill="outline">Editar icon</ion-button>
+  <ion-row class="container">
+    <ion-col class="modal" [ngClass]="openModal ? 'opened' : 'closed'">
+      <div class="modal-header">
+        <ion-icon name="close" class="icon" (click)="closeModal()"></ion-icon>
+      </div>
+      <div class="modal-container">
+        <ion-text color="dark">
+          <h5>Expocición</h5>
+        </ion-text>
+        <ion-item>
+          <ion-range color="danger" [pin]="true"></ion-range>
+        </ion-item>
+        <ion-text color="dark">
+          <h5>Brillo</h5>
+        </ion-text>
+        <ion-item>
+          <ion-range color="danger" [pin]="true"></ion-range>
+        </ion-item>
+        <ion-text color="dark">
+          <h5>Contraste</h5>
+        </ion-text>
+        <ion-item>
+          <ion-range color="danger" [pin]="true"></ion-range>
+        </ion-item>
+        <ion-text color="dark">
+          <h5>Saturación</h5>
+        </ion-text>
+        <ion-item>
+          <ion-range color="danger" [pin]="true"></ion-range>
+        </ion-item>
+        <ion-text color="dark">
+          <h5>Tinte</h5>
+        </ion-text>
+        <ion-item>
+          <ion-range color="danger" [pin]="true"></ion-range>
+        </ion-item>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>
